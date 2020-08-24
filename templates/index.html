@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Web Scrapers</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/web-scrapers-32x32.png') }}">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/datatables.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/font-awesome.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-4 text-center">
+                <h1>Web Scrapers</h1>
+            </div>
+            <div class="col-12 mt-3">
+                <div class="card border-0 mx-auto" style="max-width: 50rem;">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-row">
+                                <div class="form-group col-6 col-xl-3">
+                                    <label for="InputFrequency" class="col-form-label">Frecuencia <small class="text-muted">(Segundos)</small></label>
+                                    <input class="form-control" id="InputFrequency" type="number" min="1" max="30" step="1" onkeypress="return isNumber(event)" value="1">
+                                </div>
+                                <div class="form-group col-6 col-xl-3">
+                                    <label for="InputCurrency" class="col-form-label">Moneda</label>
+                                    <input class="form-control" id="InputCurrency" type="text" placeholder="Criptomoneda">
+                                </div>
+                                <div class="form-group col-12 col-xl-6">
+                                    <label for="btnScraperAdd" class="col-form-label d-none d-xl-inline-block">&nbsp;</label>
+                                    <button id="btnScraperAdd" class="btn btn-secondary btn-block ws-input-100" style="width:100px;" type="button">Crear</button>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="form-row">
+                                <div class="form-group col-12">
+                                    <button id="btnTableUpdate" class="btn btn-secondary btn-block" style="width:100px;" type="button">Actualizar</button>
+                                </div>
+                                <div class="form-group col-12">
+                                    <table id="scrapersTable" class="table table-bordered">
+                                        <thead style="font-size:12px;">
+                                            <th scope="col" style="width:2%;">ID</th>
+                                            <th scope="col" style="width:8%;">Moneda</th>
+                                            <th scope="col" style="width:18%;">Último valor</th>
+                                            <th scope="col" style="width:23%;">Última actualización</th>
+                                            <th scope="col" style="width:8%;">Frecuencia</th>
+                                            <th scope="col" style="width:22%;">Creación</th>
+                                            <th scope="col" style="width:19%;">Opciones</th>
+                                        </thead>
+                                        <tbody style="font-size:12px;">
+                                            
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename= 'js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'js/bootstrap.bundle.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'js/jquery-3.5.1.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'js/datatables.js') }}"></script>
+    <script src="{{ url_for('static', filename= 'js/web-scrapers.js') }}"></script>
+</body>
+</html>
