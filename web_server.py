@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, jsonify
-from flask_cors import CORS
 import sqlite3
 import requests
 import json
@@ -183,10 +182,6 @@ class WebScraper(threading.Thread):
         return price
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = 'HERNAN-HERNANDEZ#2020+'
-app.config['SESSION_COOKIE_SECURE '] = True
-app.config['SESSION_COOKIE_SAMESITE '] = "None"
-CORS(app)
 
 @app.route('/')
 def index():
