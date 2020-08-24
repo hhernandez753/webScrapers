@@ -72,6 +72,8 @@ function addScraper(){
                     let data = result.data;
                     addRowScrapersTable(data);
                 }
+
+                updateScrapersTable();
             },
             timeout: 60000
         });
@@ -93,6 +95,8 @@ function removeScraper(coin){
         success: function(result){
             console.log(result.mssg);
             removeRowScrapersTable(coin);
+
+            updateScrapersTable();
         },
         timeout: 60000
     });
@@ -147,6 +151,8 @@ function removeRowScrapersTable(coin){
 
 function updateScrapersTable(){
     let scrapersTable = $('#scrapersTable').DataTable();
+    let i = 0;
+    let tFrequency = 0;
     scrapersTable.rows("tbody tr").every( function ( rowIdx, tableLoop, rowLoop ) {
         let scraperData = this.data();
         let urlBase = window.location.protocol + '//' + window.location.hostname + ':' + window.location.port + '/';
@@ -163,15 +169,23 @@ function updateScrapersTable(){
             success: function(result){
                 let data = result.data;
                 if (data.length > 0){
+                    i++;
                     scrapersTable.cell(rowIdx,2).data(data[0].price);
                     scrapersTable.cell(rowIdx,3).data(data[0].lastUpdate);
                     scrapersTable.cell(rowIdx,4).data(`<input id="fq-${data[0].coin}" class="form-control border-0" type="number" min="1" max="30" step="1" onkeypress="return isNumber(event)" value="${data[0].frequency}" style="width:70px;font-size:11px;">`);
+                    tFrequency += data[0].frequency;
                 }
                 scrapersTable.draw();
             },
             timeout: 60000
         });
     });
+
+    if (i > 0){
+        $("#fq-avg").text(tFrequency/i);
+    }else{
+        $("#fq-avg").text(0);
+    }
 };
 
 function updateScraperFrequency(coin, frequency){
@@ -187,6 +201,8 @@ function updateScraperFrequency(coin, frequency){
         },
         success: function(result){
             console.log(result.mssg);
+
+            updateScrapersTable();
         },
         timeout: 60000
     });
