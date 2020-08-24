@@ -9,4 +9,4 @@ Aplicacion Flask para administrar Web Scrapers de Criptomonedas
 
 # Ejecutar y probar aplicación
 + python3 web_server.py
-+ Ingresar en browser (Mozilla Firefox, Google Chrome, Microsoft Edge) la url: http://localhost:8080/
++ Ingresar en navegador web (Mozilla Firefox, Google Chrome, Microsoft Edge) la url: http://localhost:8080/
